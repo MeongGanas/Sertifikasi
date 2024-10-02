@@ -1,26 +1,17 @@
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
+import DashboardLayout from "@/Layouts/DashboardLayout";
+import { PageProps } from "@/types";
+import { Head } from "@inertiajs/react";
 
-export default function Dashboard() {
+export default function Dashboard({ auth: { user } }: PageProps) {
     return (
-        <AuthenticatedLayout
-            header={
-                <h2 className="text-xl font-semibold leading-tight text-gray-800">
-                    Dashboard
-                </h2>
-            }
-        >
+        <DashboardLayout user={user}>
             <Head title="Dashboard" />
 
-            <div className="py-12">
-                <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                        <div className="p-6 text-gray-900">
-                            You're logged in!
-                        </div>
-                    </div>
-                </div>
+            <div className="bg-white p-6 rounded-md border">
+                <h1 className="text-3xl">
+                    Welcome Back <span className="font-bold">{user.name}</span>!
+                </h1>
             </div>
-        </AuthenticatedLayout>
+        </DashboardLayout>
     );
 }
