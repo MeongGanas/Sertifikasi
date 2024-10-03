@@ -8,6 +8,8 @@ import { Toaster } from "react-hot-toast";
 
 const appName = import.meta.env.VITE_APP_NAME || "Laravel";
 
+document.body.classList.add("dark");
+
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: (name) =>

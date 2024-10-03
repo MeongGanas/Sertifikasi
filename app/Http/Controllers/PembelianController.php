@@ -14,10 +14,23 @@ class PembelianController extends Controller
      */
     public function index()
     {
-        $query = Pembelian::latest()->with('barang');
+        $query = Pembelian::latest();
+
+        if (request("search")) {
+            $searchTerm = request("search");
+
+            $query->where('total_harga', 'like', '%' . $searchTerm . '%')
+                ->orWhere('jumlah', 'like', '%' . $searchTerm . '%');
+
+            $query->orWhereHas('barang', function ($q) use ($searchTerm) {
+                $q->where('nama', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('kategori', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('harga', 'like', '%' . $searchTerm . '%');
+            });
+        }
 
         return Inertia::render('Pembelian', [
-            "allPembelian" => $query->paginate(5),
+            "allPembelian" => $query->with('barang')->paginate(5),
         ]);
     }
 

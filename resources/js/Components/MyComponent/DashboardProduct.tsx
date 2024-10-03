@@ -85,6 +85,16 @@ export function ProductTabs({ products }: { products: ProductsProps }) {
                             </TableRow>
                         </TableHeader>
                         <TableBody>
+                            {products.data.length == 0 && (
+                                <TableRow>
+                                    <TableCell
+                                        colSpan={7}
+                                        className="text-center"
+                                    >
+                                        Tidak ada data ditemukan.
+                                    </TableCell>
+                                </TableRow>
+                            )}
                             {products.data &&
                                 products.data.map((product) => (
                                     <TableRow key={product.id}>

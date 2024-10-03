@@ -72,6 +72,16 @@ export function PetugasTabs({ petugas }: { petugas: UserProps }) {
                             </TableRow>
                         </TableHeader>
                         <TableBody>
+                            {petugas.data.length == 0 && (
+                                <TableRow>
+                                    <TableCell
+                                        colSpan={7}
+                                        className="text-center"
+                                    >
+                                        Tidak ada data ditemukan.
+                                    </TableCell>
+                                </TableRow>
+                            )}
                             {petugas.data &&
                                 petugas.data.map((petugas) => (
                                     <TableRow key={petugas.id}>

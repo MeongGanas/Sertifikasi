@@ -39,6 +39,7 @@ import {
 import { Link } from "@inertiajs/react";
 import React from "react";
 import { User } from "@/types";
+import SearchForm from "./Search";
 
 function AsideLink({
     link,
@@ -205,9 +206,10 @@ export function DashboardHeader({ user }: { user: User }) {
                     </BreadcrumbItem>
                 </BreadcrumbList>
             </Breadcrumb>
+            <SearchForm />
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                    <div className="ml-auto flex items-center gap-4">
+                    <div className="flex items-center gap-4">
                         <span>{user.name}</span>
                         <Button
                             variant="outline"

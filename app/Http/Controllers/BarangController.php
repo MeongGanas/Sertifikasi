@@ -13,10 +13,16 @@ class BarangController extends Controller
      */
     public function index()
     {
-        $query = Barang::latest()->with('pembelian');
+        $query = Barang::latest();
+
+        if (request("search")) {
+            $query->where('nama', 'like', '%' . request('search') . '%')
+                ->orWhere('kategori', 'like', '%' . request('search') . '%')
+                ->orWhere('harga', 'like', '%' . request('search') . '%');
+        }
 
         return Inertia::render('Barang', [
-            "allProducts" => $query->paginate(5),
+            "allProducts" => $query->with('pembelian')->paginate(5),
         ]);
     }
 

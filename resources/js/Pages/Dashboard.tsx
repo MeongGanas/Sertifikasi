@@ -7,7 +7,7 @@ export default function Dashboard({ auth: { user } }: PageProps) {
         <DashboardLayout user={user}>
             <Head title="Dashboard" />
 
-            <div className="bg-white p-6 rounded-md border">
+            <div className="p-6 rounded-md border">
                 <h1 className="text-3xl">
                     Welcome Back <span className="font-bold">{user.name}</span>!
                 </h1>

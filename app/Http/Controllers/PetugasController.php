@@ -14,8 +14,15 @@ class PetugasController extends Controller
      */
     public function index()
     {
+        $query = User::where('role', 'petugas')->latest();
+
+        if (request("search")) {
+            $query->where('name', 'like', '%' . request('search') . '%')
+                ->orWhere('username', 'like', '%' . request('search') . '%');
+        }
+
         return Inertia::render("Petugas", [
-            "petugas" => User::where('role', 'petugas')->paginate(5)
+            "petugas" => $query->paginate(5)
         ]);
     }
 

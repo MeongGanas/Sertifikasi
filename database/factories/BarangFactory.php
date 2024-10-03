@@ -18,7 +18,7 @@ class BarangFactory extends Factory
     {
         return [
             'nama' => fake()->word(),
-            'kategori' => fake()->randomElement(['Elektronik', 'Furnitur', 'Pakaian', 'Makanan']),
+            'kategori' => fake()->randomElement(['makanan', 'minuman', 'snack']),
             'stock' => fake()->numberBetween(1, 100),
             'harga' => fake()->randomFloat(2, 10000, 1000000),
             'created_at' => now(),

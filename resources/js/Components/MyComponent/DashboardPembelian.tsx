@@ -78,6 +78,16 @@ export function PembelianTabs({ pembelian }: { pembelian: PembelianProps }) {
                             </TableRow>
                         </TableHeader>
                         <TableBody>
+                            {pembelian.data.length == 0 && (
+                                <TableRow>
+                                    <TableCell
+                                        colSpan={7}
+                                        className="text-center"
+                                    >
+                                        Tidak ada data ditemukan.
+                                    </TableCell>
+                                </TableRow>
+                            )}
                             {pembelian.data &&
                                 pembelian.data.map((data) => (
                                     <TableRow key={data.id}>
